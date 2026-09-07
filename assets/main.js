@@ -107,8 +107,8 @@
     if (skipBtn) skipBtn.addEventListener("click", showReveal);
 
     // The crawl is a fixed-length linear animation (style.css: 3s hold +
-    // 17s scroll). Cut to the reveal right as the last line dissolves into
+    // 27s scroll). Cut to the reveal right as the last line dissolves into
     // the top fade. One deterministic timer, no guessing.
-    setTimeout(showReveal, 17000);
+    setTimeout(showReveal, 26000);
   }
 })();
