@@ -110,11 +110,11 @@
     if (skipBtn) skipBtn.addEventListener("click", showReveal);
 
     // The crawl is a fixed-length linear animation (style.css: 3s hold +
-    // 27s scroll). We cut to the reveal ~26s in, as the last line dissolves
+    // 40s scroll). We cut to the reveal ~38s in, as the last line dissolves
     // into the top fade. But the reader can tap to pause if something pulls
     // them away — that freezes both the scroll (via the .is-paused class in
     // style.css) and this timer.
-    var AUTO_MS = 26000;
+    var AUTO_MS = 38000;
     var tapHint = document.getElementById("tapHint");
 
     var remaining = AUTO_MS;

@@ -144,9 +144,9 @@ html, body {
   line-height: 1.7;
   text-align: justify;
   font-weight: 700;
-  /* 3s hold, then 27s scroll. main.js cuts to the reveal at ~26s,
+  /* 3s hold, then 40s scroll. main.js cuts to the reveal at ~38s,
      as the last line dissolves into the top fade. */
-  animation: crawl 27s linear 3s forwards;
+  animation: crawl 40s linear 3s forwards;
   transform: translateY(100vh);
 }
 
