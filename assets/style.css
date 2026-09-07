@@ -129,7 +129,7 @@ html, body {
   line-height: 1.7;
   text-align: justify;
   font-weight: 700;
-  animation: crawl 58s linear 5.5s forwards;
+  animation: crawl 38s linear 5s forwards;
   transform: translateY(100vh);
 }
 
@@ -297,6 +297,14 @@ h3 {
   text-align: center;
   margin-top: 3rem;
   color: var(--muted);
+}
+.reveal-foot .birthday {
+  font-family: "Anton", "Pathway Gothic One", Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  color: var(--sw-yellow);
+  margin: 0 0 0.6rem;
 }
 .reveal-foot .signed { color: var(--sw-yellow); font-weight: 700; margin-top: 0.3rem; }
 

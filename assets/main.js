@@ -105,7 +105,15 @@
     showReveal();
   } else {
     if (skipBtn) skipBtn.addEventListener("click", showReveal);
-    // Auto-advance shortly after the crawl finishes.
-    setTimeout(showReveal, 66000);
+
+    // Auto-advance the moment the crawl animation finishes...
+    var crawlContent = document.querySelector(".crawl-content");
+    if (crawlContent) {
+      crawlContent.addEventListener("animationend", function (e) {
+        if (e.animationName === "crawl") showReveal();
+      });
+    }
+    // ...with a fallback in case animationend never fires (throttled tab, etc.)
+    setTimeout(showReveal, 47000);
   }
 })();
