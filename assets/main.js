@@ -50,9 +50,9 @@
     var el = document.getElementById(id);
     if (el && value) el.textContent = value;
   }
-  setText("friendName", cfg.friendName);
   setText("gotcha", cfg.gotcha);
-  setText("revealTitle", cfg.revealTitle);
+  setText("birthdayLine", cfg.birthdayLine);
+  setText("revealSubtitle", cfg.revealSubtitle);
   setText("tagline", cfg.tagline);
   setText("lockerLocation", cfg.lockerLocation);
   setText("lockerCode", cfg.lockerCode);
@@ -106,14 +106,9 @@
   } else {
     if (skipBtn) skipBtn.addEventListener("click", showReveal);
 
-    // Auto-advance the moment the crawl animation finishes...
-    var crawlContent = document.querySelector(".crawl-content");
-    if (crawlContent) {
-      crawlContent.addEventListener("animationend", function (e) {
-        if (e.animationName === "crawl") showReveal();
-      });
-    }
-    // ...with a fallback in case animationend never fires (throttled tab, etc.)
-    setTimeout(showReveal, 47000);
+    // The crawl is a fixed-length linear animation (style.css: 3s hold +
+    // 17s scroll). Cut to the reveal right as the last line dissolves into
+    // the top fade. One deterministic timer, no guessing.
+    setTimeout(showReveal, 17000);
   }
 })();

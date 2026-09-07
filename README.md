@@ -11,9 +11,10 @@ set, and hands over the location + a second QR for the Easybox.
 book + printed QR  ──scan──▶  this GitHub Pages site
                                   │
                                   ├─ Star Wars intro crawl ("it was the book, always the book")
-                                  ├─ THE REVEAL: "you didn't think that was it"
-                                  ├─ hints about the LEGO Star Wars set
-                                  └─ Easybox location + code + 2nd QR ──scan──▶ Maps / locker
+                                  │   (auto-advances after ~17s, or tap "skip intro")
+                                  ├─ THE REVEAL: big "HAPPY BIRTHDAY" in Star Wars type
+                                  │   (the theme is the only hint that the gift is Star Wars)
+                                  └─ Easybox location + code + 2nd QR ──scan──▶ opens the locker
 ```
 
 ## Editing it (this is all you need)
@@ -22,15 +23,17 @@ Everything lives in **`assets/config.js`**. No HTML required. Set:
 
 | field            | what it is |
 |------------------|------------|
-| `friendName`     | who it's addressed to |
-| `setName`        | teasing hint line about the LEGO set |
+| `gotcha`         | small line above the hero |
+| `birthdayLine`   | the hero — biggest thing on the page ("Happy Birthday") |
+| `revealSubtitle` | small line under the hero; the gift hint — keep it a Star Wars riff |
+| `tagline`        | one light sentence under that |
 | `lockerLocation` | where the Easybox is |
-| `lockerCode`     | pickup code for the locker (if you have it) |
-| `qrTarget`       | URL the on-page QR encodes — usually a Google Maps link to the Easybox |
+| `lockerCode`     | pickup code, shown as a fallback if the QR won't scan |
+| `qrTarget`       | what the on-page QR encodes — ideally the courier's "open locker" link, else a Maps link |
 | `qrCaption`      | caption under the QR |
 | `mapLink`        | "Open in Maps" button target |
 | `signOff`        | how you sign it |
-| `skipIntro`      | `true` while editing, so you skip the 60s crawl |
+| `skipIntro`      | `true` while editing, so you skip straight to the reveal |
 
 Commit + push and GitHub Pages redeploys in ~1 minute.
 
@@ -40,7 +43,7 @@ Commit + push and GitHub Pages redeploys in ~1 minute.
 python3 -m http.server 8000
 ```
 
-Then open http://localhost:8000 — add `?` nothing needed, or set `skipIntro: true`.
+Then open http://localhost:8000 — or set `skipIntro: true` to skip the crawl.
 
 ## Deploy (GitHub Pages)
 

@@ -85,6 +85,10 @@ html, body {
   text-align: center;
   overflow: hidden;
   perspective: 400px;
+  /* lock to the visible viewport so nothing scrolls during the intro and
+     the skip button never hides behind mobile browser chrome */
+  height: 100vh;
+  height: 100svh;
 }
 
 .fade-line {
@@ -92,7 +96,7 @@ html, body {
   font-size: clamp(1.1rem, 3.5vw, 1.9rem);
   letter-spacing: 0.06em;
   opacity: 0;
-  animation: fadeInOut 6s ease-in-out 0.4s forwards;
+  animation: fadeInOut 4.5s ease-in-out 0.3s forwards;
   position: absolute;
   top: 22%;
   padding: 0 1rem;
@@ -129,7 +133,9 @@ html, body {
   line-height: 1.7;
   text-align: justify;
   font-weight: 700;
-  animation: crawl 38s linear 5s forwards;
+  /* 3s hold, then 17s scroll. main.js cuts to the reveal at ~17s,
+     as the last line dissolves into the top fade. */
+  animation: crawl 17s linear 3s forwards;
   transform: translateY(100vh);
 }
 
@@ -149,19 +155,20 @@ html, body {
 
 @keyframes crawl {
   0% { transform: translateY(100vh); }
-  100% { transform: translateY(-320vh); }
+  100% { transform: translateY(-220vh); }
 }
 
 #skip {
-  position: fixed;
-  bottom: 18px;
-  right: 18px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   z-index: 3;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.55);
   color: var(--muted);
   border: 1px solid var(--muted);
   border-radius: 999px;
-  padding: 8px 16px;
+  padding: 10px 20px;
   font: inherit;
   letter-spacing: 0.05em;
   cursor: pointer;
@@ -188,15 +195,28 @@ html, body {
 .gotcha {
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  font-size: clamp(0.9rem, 3.4vw, 1.15rem);
-  color: #fff;
-  margin: 0 0 1.8rem;
+  font-size: clamp(0.8rem, 3vw, 1rem);
+  color: var(--muted);
+  margin: 0 0 1.4rem;
 }
 
 .reveal-head .sw-logo {
   font-size: clamp(2.4rem, 11.5vw, 5.4rem);
   margin-bottom: 0.9rem;
   overflow-wrap: break-word;
+}
+
+/* the hero: biggest thing on the page */
+.reveal-head .birthday-hero {
+  font-size: clamp(3.2rem, 16vw, 7rem);
+  line-height: 0.98;
+  margin: 0 0 1.1rem;
+  transform: perspective(760px) rotateX(7deg) scaleY(1.1);
+}
+
+.reveal-head .episode {
+  text-indent: 0;
+  margin: 0 0 1.4rem;
 }
 
 .lede {
@@ -297,14 +317,6 @@ h3 {
   text-align: center;
   margin-top: 3rem;
   color: var(--muted);
-}
-.reveal-foot .birthday {
-  font-family: "Anton", "Pathway Gothic One", Impact, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: clamp(1.6rem, 6vw, 2.4rem);
-  color: var(--sw-yellow);
-  margin: 0 0 0.6rem;
 }
 .reveal-foot .signed { color: var(--sw-yellow); font-weight: 700; margin-top: 0.3rem; }
 
