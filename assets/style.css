@@ -89,6 +89,17 @@ html, body {
      the skip button never hides behind mobile browser chrome */
   height: 100vh;
   height: 100svh;
+  /* the whole scene is a tap target for pause/resume */
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* pause freeze — class-driven so it can't be out-run by an inline style */
+#crawl-scene.is-paused .crawl-content,
+#crawl-scene.is-paused .fade-line {
+  animation-play-state: paused !important;
 }
 
 .fade-line {

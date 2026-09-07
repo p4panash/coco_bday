@@ -112,26 +112,22 @@
     // The crawl is a fixed-length linear animation (style.css: 3s hold +
     // 27s scroll). We cut to the reveal ~26s in, as the last line dissolves
     // into the top fade. But the reader can tap to pause if something pulls
-    // them away — that freezes both the scroll and this timer.
+    // them away — that freezes both the scroll (via the .is-paused class in
+    // style.css) and this timer.
     var AUTO_MS = 26000;
-    var crawlEls = [
-      document.querySelector(".crawl-content"),
-      document.querySelector(".fade-line"),
-    ].filter(Boolean);
     var tapHint = document.getElementById("tapHint");
 
     var remaining = AUTO_MS;
     var runningSince = Date.now();
     var paused = false;
+    var lastTap = 0;
     autoTimer = setTimeout(showReveal, remaining);
 
     function setPaused(next) {
       if (done || next === paused) return;
       paused = next;
       crawlScene.classList.toggle("is-paused", paused);
-      crawlEls.forEach(function (el) {
-        el.style.animationPlayState = paused ? "paused" : "running";
-      });
+      if (tapHint) tapHint.classList.add("gone");
       if (paused) {
         clearTimeout(autoTimer);
         remaining -= Date.now() - runningSince;
@@ -141,9 +137,14 @@
       }
     }
 
-    crawlScene.addEventListener("click", function (e) {
-      if (e.target.closest("#skip")) return; // let the skip button do its thing
-      if (tapHint) tapHint.classList.add("gone");
+    // Use pointerdown, NOT click: the crawl text is scrolling, so a tap's
+    // up-target differs from its down-target and the browser fires no click.
+    document.addEventListener("pointerdown", function (e) {
+      if (done) return;
+      if (e.target.closest && e.target.closest("#skip")) return;
+      var now = Date.now();
+      if (now - lastTap < 300) return; // ignore accidental double-fire
+      lastTap = now;
       setPaused(!paused);
     });
 
@@ -151,7 +152,6 @@
       if (done) return;
       if (e.key === " " || e.key === "Spacebar" || e.key === "k") {
         e.preventDefault();
-        if (tapHint) tapHint.classList.add("gone");
         setPaused(!paused);
       } else if (e.key === "Escape" || e.key === "Enter") {
         showReveal();
