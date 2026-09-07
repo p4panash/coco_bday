@@ -51,7 +51,9 @@
     if (el && value) el.textContent = value;
   }
   setText("friendName", cfg.friendName);
-  setText("setName", cfg.setName);
+  setText("gotcha", cfg.gotcha);
+  setText("revealTitle", cfg.revealTitle);
+  setText("tagline", cfg.tagline);
   setText("lockerLocation", cfg.lockerLocation);
   setText("lockerCode", cfg.lockerCode);
   setText("qrCaption", cfg.qrCaption);

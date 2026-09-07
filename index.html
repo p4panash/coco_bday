@@ -8,7 +8,7 @@
 <meta name="description" content="You scanned the code. Bold. Now read carefully." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Pathway+Gothic+One&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -22,7 +22,8 @@
   <div class="crawl-wrap">
     <div class="crawl">
       <div class="crawl-content">
-        <h1>EPISODE IX<br />THE FORGOTTEN TOME</h1>
+        <p class="episode">Episode IX</p>
+        <h1 class="sw-logo">The Forgotten Tome</h1>
         <p>
           You left a book at the safehouse. Weeks passed.
           It sat there. Judging us. Gathering dust.
@@ -51,26 +52,14 @@
 <main id="reveal" class="scene hidden">
 
   <header class="reveal-head">
-    <p class="kicker">Transmission decrypted</p>
-    <h2>Ha. Ha. <span>You didn't think that was it.</span></h2>
-    <p class="lede">
-      The book was a decoy. The wrapping paper was a lie we told with love.
-      Your actual present is sitting in a locker across town, and it is
-      <em>heavy</em> for a reason.
+    <p class="gotcha" id="gotcha">Ha. You didn't think that was it.</p>
+    <p class="episode">Episode X</p>
+    <h2 class="sw-logo" id="revealTitle">The Gift Awakens</h2>
+    <p class="lede" id="tagline">
+      The book was the decoy. Your real present is waiting in a locker
+      across town &mdash; heavier than it looks, and best carried with both hands.
     </p>
   </header>
-
-  <section class="hint-block">
-    <h3>Intelligence on the cargo</h3>
-    <ul class="hints">
-      <li>Comes flat-packed. Some assembly required. Okay, a <strong>lot</strong> of assembly.</li>
-      <li>Contains a four-digit number of very small, very steppable pieces.</li>
-      <li>Instruction manual thicker than the book we just mailed you.</li>
-      <li>Ships with the Force. And at least one smuggler.</li>
-      <li>If you step on part of it barefoot at 2am, that's not a bug. That's canon.</li>
-    </ul>
-    <p class="set-name" id="setName"><!-- filled from config.js --></p>
-  </section>
 
   <section class="locker">
     <h3>Extraction point</h3>

@@ -35,6 +35,46 @@ html, body {
 
 .hidden { display: none !important; }
 
+/* ---------------- STAR WARS LOGO TITLE ---------------- */
+
+.sw-logo {
+  font-family: "Anton", "Pathway Gothic One", Impact, sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: -0.018em;
+  line-height: 0.86;
+  margin: 0;
+  color: #f7d417;
+  background: linear-gradient(
+    180deg,
+    #fff6b0 0%,
+    #ffe81f 16%,
+    #f5c400 42%,
+    #b07d0c 66%,
+    #6f4c05 86%,
+    #4a3203 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: perspective(620px) rotateX(9deg) scaleY(1.18);
+  transform-origin: 50% 100%;
+  filter:
+    drop-shadow(0 1px 0 #6f4c05)
+    drop-shadow(0 3px 0 #4a3203)
+    drop-shadow(0 10px 14px rgba(0, 0, 0, 0.65));
+}
+
+.episode {
+  font-family: "Pathway Gothic One", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.42em;
+  color: #4bd5ee;
+  font-size: clamp(0.85rem, 3vw, 1.15rem);
+  margin: 0 0 0.7rem;
+  text-indent: 0.42em;
+}
+
 /* ---------------- INTRO CRAWL ---------------- */
 
 #crawl-scene {
@@ -93,13 +133,18 @@ html, body {
   transform: translateY(100vh);
 }
 
-.crawl-content h1 {
+.crawl-content .episode {
   text-align: center;
-  font-family: "Pathway Gothic One", sans-serif;
-  font-size: clamp(2rem, 7vw, 3.6rem);
-  letter-spacing: 0.08em;
-  margin: 0 0 1.4em;
-  line-height: 1.1;
+  text-indent: 0;
+  margin-bottom: 1rem;
+}
+
+.crawl-content h1.sw-logo {
+  text-align: center;
+  font-size: clamp(2.4rem, 9vw, 4.6rem);
+  margin: 0 0 1.5em;
+  /* flatten the perspective inside the already-tilted crawl */
+  transform: scaleY(1.14);
 }
 
 @keyframes crawl {
@@ -129,7 +174,7 @@ html, body {
 #reveal {
   max-width: 720px;
   margin: 0 auto;
-  padding: 8vh 22px 12vh;
+  padding: 12vh 22px 12vh;
 }
 
 #reveal.fade-in { animation: pageFade 1s ease both; }
@@ -138,31 +183,28 @@ html, body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.reveal-head { text-align: center; margin-bottom: 3rem; }
+.reveal-head { text-align: center; margin-bottom: 3.5rem; }
 
-.kicker {
+.gotcha {
   text-transform: uppercase;
-  letter-spacing: 0.35em;
-  font-size: 0.8rem;
-  color: #4bd5ee;
-  margin: 0 0 1rem;
-}
-
-.reveal-head h2 {
-  font-family: "Pathway Gothic One", sans-serif;
-  font-size: clamp(2.2rem, 8vw, 3.8rem);
-  line-height: 1.05;
-  margin: 0 0 1rem;
+  letter-spacing: 0.16em;
+  font-size: clamp(0.9rem, 3.4vw, 1.15rem);
   color: #fff;
-  text-transform: uppercase;
+  margin: 0 0 1.8rem;
 }
-.reveal-head h2 span { color: var(--sw-yellow); display: block; }
+
+.reveal-head .sw-logo {
+  font-size: clamp(2.4rem, 11.5vw, 5.4rem);
+  margin-bottom: 0.9rem;
+  overflow-wrap: break-word;
+}
 
 .lede {
   font-size: clamp(1rem, 3.4vw, 1.2rem);
   color: var(--text);
-  max-width: 46ch;
-  margin: 0 auto;
+  max-width: 48ch;
+  margin: 1.6rem auto 0;
+  line-height: 1.55;
 }
 .lede em { color: var(--sw-yellow); font-style: normal; }
 
@@ -177,23 +219,13 @@ h3 {
   margin: 0 0 1.2rem;
 }
 
-.hint-block, .locker {
+.locker {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 1.6rem 1.4rem;
   margin-bottom: 1.8rem;
   backdrop-filter: blur(3px);
-}
-
-.hints { margin: 0; padding-left: 1.2rem; }
-.hints li { margin: 0.55rem 0; line-height: 1.5; }
-.hints strong { color: var(--sw-yellow); }
-
-.set-name {
-  margin: 1.2rem 0 0;
-  font-style: italic;
-  color: var(--muted);
 }
 
 .locker-grid {
