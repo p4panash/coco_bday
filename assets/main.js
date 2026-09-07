@@ -92,9 +92,12 @@
   var skipBtn = document.getElementById("skip");
   var done = false;
 
+  var autoTimer = null;
+
   function showReveal() {
     if (done) return;
     done = true;
+    if (autoTimer) clearTimeout(autoTimer);
     crawlScene.classList.add("hidden");
     reveal.classList.remove("hidden");
     reveal.classList.add("fade-in");
@@ -107,8 +110,52 @@
     if (skipBtn) skipBtn.addEventListener("click", showReveal);
 
     // The crawl is a fixed-length linear animation (style.css: 3s hold +
-    // 27s scroll). Cut to the reveal right as the last line dissolves into
-    // the top fade. One deterministic timer, no guessing.
-    setTimeout(showReveal, 26000);
+    // 27s scroll). We cut to the reveal ~26s in, as the last line dissolves
+    // into the top fade. But the reader can tap to pause if something pulls
+    // them away — that freezes both the scroll and this timer.
+    var AUTO_MS = 26000;
+    var crawlEls = [
+      document.querySelector(".crawl-content"),
+      document.querySelector(".fade-line"),
+    ].filter(Boolean);
+    var tapHint = document.getElementById("tapHint");
+
+    var remaining = AUTO_MS;
+    var runningSince = Date.now();
+    var paused = false;
+    autoTimer = setTimeout(showReveal, remaining);
+
+    function setPaused(next) {
+      if (done || next === paused) return;
+      paused = next;
+      crawlScene.classList.toggle("is-paused", paused);
+      crawlEls.forEach(function (el) {
+        el.style.animationPlayState = paused ? "paused" : "running";
+      });
+      if (paused) {
+        clearTimeout(autoTimer);
+        remaining -= Date.now() - runningSince;
+      } else {
+        runningSince = Date.now();
+        autoTimer = setTimeout(showReveal, Math.max(remaining, 0));
+      }
+    }
+
+    crawlScene.addEventListener("click", function (e) {
+      if (e.target.closest("#skip")) return; // let the skip button do its thing
+      if (tapHint) tapHint.classList.add("gone");
+      setPaused(!paused);
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (done) return;
+      if (e.key === " " || e.key === "Spacebar" || e.key === "k") {
+        e.preventDefault();
+        if (tapHint) tapHint.classList.add("gone");
+        setPaused(!paused);
+      } else if (e.key === "Escape" || e.key === "Enter") {
+        showReveal();
+      }
+    });
   }
 })();

@@ -178,6 +178,52 @@ html, body {
 }
 #skip:hover { color: var(--sw-yellow); border-color: var(--sw-yellow); }
 
+/* "tap to pause" hint — shows briefly, then fades on its own */
+.tap-hint {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(16px + env(safe-area-inset-top, 0px));
+  z-index: 6;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: hintFade 5s ease-in-out 1.5s forwards;
+}
+.tap-hint.gone { animation: none; opacity: 0; transition: opacity 0.3s; }
+
+@keyframes hintFade {
+  0% { opacity: 0; }
+  15% { opacity: 0.9; }
+  70% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+/* paused state */
+#crawl-scene.is-paused .crawl-wrap { opacity: 0.28; transition: opacity 0.25s; }
+
+.paused-badge {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 8;
+  color: var(--sw-yellow);
+  font-family: "Pathway Gothic One", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+#crawl-scene.is-paused .paused-badge { opacity: 1; }
+#crawl-scene.is-paused .tap-hint { opacity: 0; animation: none; }
+
 /* ---------------- REVEAL ---------------- */
 
 #reveal {
