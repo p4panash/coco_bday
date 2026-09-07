@@ -1,0 +1,273 @@
+:root {
+  --sw-yellow: #ffe81f;
+  --bg: #000;
+  --text: #e8e8e8;
+  --muted: #9aa0a6;
+  --panel: rgba(10, 12, 20, 0.72);
+  --border: rgba(255, 232, 31, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Roboto Condensed", system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+#starfield {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: block;
+}
+
+.scene {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+.hidden { display: none !important; }
+
+/* ---------------- INTRO CRAWL ---------------- */
+
+#crawl-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  perspective: 400px;
+}
+
+.fade-line {
+  color: #4bd5ee;
+  font-size: clamp(1.1rem, 3.5vw, 1.9rem);
+  letter-spacing: 0.06em;
+  opacity: 0;
+  animation: fadeInOut 6s ease-in-out 0.4s forwards;
+  position: absolute;
+  top: 22%;
+  padding: 0 1rem;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.crawl-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 28%, #000 62%, transparent 96%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 28%, #000 62%, transparent 96%);
+}
+
+.crawl {
+  position: relative;
+  width: min(90vw, 780px);
+  transform: rotateX(26deg);
+  transform-origin: 50% 100%;
+  margin-top: 12vh;
+}
+
+.crawl-content {
+  color: var(--sw-yellow);
+  font-size: clamp(1.15rem, 3.6vw, 1.9rem);
+  line-height: 1.7;
+  text-align: justify;
+  font-weight: 700;
+  animation: crawl 58s linear 5.5s forwards;
+  transform: translateY(100vh);
+}
+
+.crawl-content h1 {
+  text-align: center;
+  font-family: "Pathway Gothic One", sans-serif;
+  font-size: clamp(2rem, 7vw, 3.6rem);
+  letter-spacing: 0.08em;
+  margin: 0 0 1.4em;
+  line-height: 1.1;
+}
+
+@keyframes crawl {
+  0% { transform: translateY(100vh); }
+  100% { transform: translateY(-320vh); }
+}
+
+#skip {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 3;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--muted);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font: inherit;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+#skip:hover { color: var(--sw-yellow); border-color: var(--sw-yellow); }
+
+/* ---------------- REVEAL ---------------- */
+
+#reveal {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 8vh 22px 12vh;
+}
+
+#reveal.fade-in { animation: pageFade 1s ease both; }
+@keyframes pageFade {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal-head { text-align: center; margin-bottom: 3rem; }
+
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.8rem;
+  color: #4bd5ee;
+  margin: 0 0 1rem;
+}
+
+.reveal-head h2 {
+  font-family: "Pathway Gothic One", sans-serif;
+  font-size: clamp(2.2rem, 8vw, 3.8rem);
+  line-height: 1.05;
+  margin: 0 0 1rem;
+  color: #fff;
+  text-transform: uppercase;
+}
+.reveal-head h2 span { color: var(--sw-yellow); display: block; }
+
+.lede {
+  font-size: clamp(1rem, 3.4vw, 1.2rem);
+  color: var(--text);
+  max-width: 46ch;
+  margin: 0 auto;
+}
+.lede em { color: var(--sw-yellow); font-style: normal; }
+
+h3 {
+  font-family: "Pathway Gothic One", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 1.5rem;
+  color: var(--sw-yellow);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+  margin: 0 0 1.2rem;
+}
+
+.hint-block, .locker {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.6rem 1.4rem;
+  margin-bottom: 1.8rem;
+  backdrop-filter: blur(3px);
+}
+
+.hints { margin: 0; padding-left: 1.2rem; }
+.hints li { margin: 0.55rem 0; line-height: 1.5; }
+.hints strong { color: var(--sw-yellow); }
+
+.set-name {
+  margin: 1.2rem 0 0;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.locker-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+
+.locker-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.locker-field .label {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.locker-field .value {
+  font-size: 1.15rem;
+  color: #fff;
+  font-weight: 700;
+}
+.mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: 0.08em; }
+
+.qr-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1.4rem 0 0.4rem;
+}
+#qrcode {
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  line-height: 0;
+  min-width: 152px;
+  min-height: 152px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#qrcode img, #qrcode canvas { display: block; }
+.qr-caption { color: var(--muted); font-size: 0.9rem; margin: 0; text-align: center; }
+
+.cta {
+  display: block;
+  text-align: center;
+  margin: 1.4rem auto 0;
+  max-width: 320px;
+  background: var(--sw-yellow);
+  color: #000;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  padding: 14px 20px;
+  border-radius: 999px;
+  transition: transform 0.12s ease, box-shadow 0.2s ease;
+}
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(255, 232, 31, 0.25);
+}
+
+.reveal-foot {
+  text-align: center;
+  margin-top: 3rem;
+  color: var(--muted);
+}
+.reveal-foot .signed { color: var(--sw-yellow); font-weight: 700; margin-top: 0.3rem; }
+
+@media (max-width: 480px) {
+  .crawl-content { text-align: left; }
+}

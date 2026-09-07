@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>NICE TRY.</title>
+<meta name="description" content="You scanned the code. Bold. Now read carefully." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<!-- ================= INTRO CRAWL ================= -->
+<section id="crawl-scene" class="scene">
+  <p class="fade-line">A long time ago, in an apartment<br />not so far away....</p>
+
+  <div class="crawl-wrap">
+    <div class="crawl">
+      <div class="crawl-content">
+        <h1>EPISODE IX<br />THE FORGOTTEN TOME</h1>
+        <p>
+          You left a book at the safehouse. Weeks passed.
+          It sat there. Judging us. Gathering dust.
+        </p>
+        <p>
+          So the GANG made a plan. We wrapped it. We tied a bow on it.
+          We watched you weigh the box in your hands and try to guess
+          what glorious treasure lay within.
+        </p>
+        <p>
+          It was the book. It was always the book. It was YOUR book.
+        </p>
+        <p>
+          But you scanned the code, which means somewhere deep down you
+          hoped for more. Good instinct. This transmission carries the
+          coordinates of the REAL cargo....
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <button id="skip" type="button">skip intro &raquo;</button>
+</section>
+
+<!-- ================= THE REVEAL ================= -->
+<main id="reveal" class="scene hidden">
+
+  <header class="reveal-head">
+    <p class="kicker">Transmission decrypted</p>
+    <h2>Ha. Ha. <span>You didn't think that was it.</span></h2>
+    <p class="lede">
+      The book was a decoy. The wrapping paper was a lie we told with love.
+      Your actual present is sitting in a locker across town, and it is
+      <em>heavy</em> for a reason.
+    </p>
+  </header>
+
+  <section class="hint-block">
+    <h3>Intelligence on the cargo</h3>
+    <ul class="hints">
+      <li>Comes flat-packed. Some assembly required. Okay, a <strong>lot</strong> of assembly.</li>
+      <li>Contains a four-digit number of very small, very steppable pieces.</li>
+      <li>Instruction manual thicker than the book we just mailed you.</li>
+      <li>Ships with the Force. And at least one smuggler.</li>
+      <li>If you step on part of it barefoot at 2am, that's not a bug. That's canon.</li>
+    </ul>
+    <p class="set-name" id="setName"><!-- filled from config.js --></p>
+  </section>
+
+  <section class="locker">
+    <h3>Extraction point</h3>
+    <div class="locker-grid">
+      <div class="locker-field">
+        <span class="label">Easybox location</span>
+        <span class="value" id="lockerLocation">—</span>
+      </div>
+      <div class="locker-field">
+        <span class="label">Locker / pickup code</span>
+        <span class="value mono" id="lockerCode">—</span>
+      </div>
+      <div class="locker-field">
+        <span class="label">Reserved for</span>
+        <span class="value" id="friendName">—</span>
+      </div>
+    </div>
+
+    <div class="qr-area">
+      <div id="qrcode" aria-label="QR code to the Easybox"></div>
+      <p class="qr-caption" id="qrCaption">Scan for directions to the locker</p>
+    </div>
+
+    <a class="cta" id="mapLink" href="#" target="_blank" rel="noopener">Open in Maps</a>
+  </section>
+
+  <footer class="reveal-foot">
+    <p>May the Force be with you. You'll need both hands free.</p>
+    <p class="signed" id="signOff">— the gang</p>
+  </footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/main.js"></script>
+</body>
+</html>
