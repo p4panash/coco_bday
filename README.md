@@ -1,5 +1,12 @@
 # coco_bday — Phase 3: "Nice try."
 
+> **⚠️ Retired — no longer part of the live prank.** The two-package plan this
+> was built for fell through (delivery/pickup logistics), so the whole thing
+> got merged into a single hunt: [`coco-hunt`](https://github.com/p4panash/coco-hunt).
+> This site's crawl + "HAPPY BIRTHDAY" reveal now live there as the hunt's
+> cold open. This repo and its Pages deploy are left up for reference but
+> nothing points to them anymore.
+
 The final leg of the birthday hunt. A friend gets mailed a book he left behind,
 wrapped like a real gift from the gang. On the book: a printed QR code that lands
 here. This page laughs at him, hints that the real present is a **LEGO Star Wars**
