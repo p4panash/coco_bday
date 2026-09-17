@@ -144,10 +144,10 @@ html, body {
   line-height: 1.7;
   text-align: justify;
   font-weight: 700;
-  /* 3s hold, then 55s scroll. main.js watches this element's actual
+  /* 3s hold, then 68s scroll. main.js watches this element's actual
      rendered position and cuts over the moment it dissolves into the top
      fade — no fixed timer to keep in sync with these numbers. */
-  animation: crawl 55s linear 3s forwards;
+  animation: crawl 68s linear 3s forwards;
   transform: translateY(100vh);
 }
 
