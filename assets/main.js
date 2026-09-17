@@ -55,7 +55,6 @@
   setText("revealSubtitle", cfg.revealSubtitle);
   setText("tagline", cfg.tagline);
   setText("lockerLocation", cfg.lockerLocation);
-  setText("sentBy", cfg.sentBy);
   setText("qrCaption", cfg.qrCaption);
   setText("signOff", cfg.signOff);
 
@@ -63,10 +62,33 @@
   if (mapLink && cfg.mapLink) {
     mapLink.href = cfg.mapLink;
   }
+  var wazeLink = document.getElementById("wazeLink");
+  if (wazeLink && cfg.wazeLink) {
+    wazeLink.href = cfg.wazeLink;
+  }
 
   // The pickup code is a real courier barcode image (assets/pickup-code.png,
   // set directly in index.html) rather than a QR generated from a URL —
   // nothing to build here.
+
+  /* ---------- "Open in Maps" action sheet ---------- */
+  var mapMenuBtn = document.getElementById("mapMenuBtn");
+  var mapMenu = document.getElementById("mapMenu");
+  if (mapMenuBtn && mapMenu) {
+    function openMapMenu() {
+      mapMenu.hidden = false;
+    }
+    function closeMapMenu() {
+      mapMenu.hidden = true;
+    }
+    mapMenuBtn.addEventListener("click", openMapMenu);
+    mapMenu.addEventListener("click", function (e) {
+      if (e.target.closest("[data-close-menu]")) closeMapMenu();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !mapMenu.hidden) closeMapMenu();
+    });
+  }
 
   /* ---------- Intro -> reveal transition ---------- */
   var crawlScene = document.getElementById("crawl-scene");

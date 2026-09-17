@@ -25,18 +25,15 @@ window.PRANK_CONFIG = {
   // Deliberately vague — say roughly how far, not what's actually there.
   lockerLocation: "About 28km north. Bring the car, not the bike.",
 
-  // Shown in the "From" field. The pickup code itself isn't shown as text
-  // anymore — it's already printed under the barcode in
-  // assets/pickup-code.png, so a separate text field was pure duplication.
-  sentBy: "REPLACE_ME (your name)",
-
   // Caption printed under the pickup barcode
   qrCaption: "Show this at the counter. No explaining required.",
 
-  // "Open in Maps" button target — points at the real spot even though the
-  // copy above stays vague.
+  // Two nav-app buttons, side by side. Both point at the real spot even
+  // though the copy above stays vague — pick whichever app he actually uses.
   mapLink:
     "https://www.google.com/maps/search/?api=1&query=Strada+Morii+220W+Sfantu+Ilie+Suceava+Romania",
+  wazeLink:
+    "https://www.waze.com/ul?q=Strada+Morii+220W+Sfantu+Ilie+Suceava+Romania&navigate=yes",
 
   // How you sign off
   signOff: "— the gang",

@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pathway+Gothic+One&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/style.css?v=2" />
+<link rel="stylesheet" href="assets/style.css?v=4" />
 </head>
 <body>
 
@@ -86,10 +86,6 @@
         <span class="label">Location</span>
         <span class="value" id="lockerLocation">—</span>
       </div>
-      <div class="locker-field">
-        <span class="label">From</span>
-        <span class="value" id="sentBy">—</span>
-      </div>
     </div>
 
     <div class="qr-area">
@@ -97,8 +93,22 @@
       <p class="qr-caption" id="qrCaption">Show this at the counter. No explaining required.</p>
     </div>
 
-    <a class="cta" id="mapLink" href="#" target="_blank" rel="noopener">Open in Maps</a>
+    <button class="cta" id="mapMenuBtn" type="button">Open in Maps</button>
   </section>
+
+  <div class="map-menu" id="mapMenu" hidden>
+    <div class="map-menu__backdrop" data-close-menu></div>
+    <div class="map-menu__sheet" role="dialog" aria-modal="true" aria-label="Choose a navigation app">
+      <p class="map-menu__title">Open in&hellip;</p>
+      <a class="map-menu__option" id="mapLink" href="#" target="_blank" rel="noopener">
+        <span>Google Maps</span>
+      </a>
+      <a class="map-menu__option" id="wazeLink" href="#" target="_blank" rel="noopener">
+        <span>Waze</span>
+      </a>
+      <button class="map-menu__cancel" type="button" data-close-menu>Cancel</button>
+    </div>
+  </div>
 
   <footer class="reveal-foot">
     <p>May the Force be with you. You'll need both hands free.</p>
@@ -106,7 +116,7 @@
   </footer>
 </main>
 
-<script src="assets/config.js?v=2"></script>
-<script src="assets/main.js?v=2"></script>
+<script src="assets/config.js?v=4"></script>
+<script src="assets/main.js?v=4"></script>
 </body>
 </html>

@@ -352,22 +352,109 @@ h3 {
 
 .cta {
   display: block;
+  width: 100%;
   text-align: center;
   margin: 1.4rem auto 0;
   max-width: 320px;
   background: var(--sw-yellow);
   color: #000;
+  font: inherit;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   text-decoration: none;
+  border: none;
   padding: 14px 20px;
   border-radius: 999px;
+  cursor: pointer;
   transition: transform 0.12s ease, box-shadow 0.2s ease;
 }
 .cta:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 26px rgba(255, 232, 31, 0.25);
+}
+
+/* "Open in Maps" -> action sheet with a choice of nav apps */
+.map-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.map-menu[hidden] { display: none; }
+
+.map-menu__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  animation: mapMenuFadeIn 0.2s ease both;
+}
+
+.map-menu__sheet {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  background: #0d0d10;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: 20px 20px 0 0;
+  padding: 1.4rem 1.2rem calc(1.2rem + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  animation: mapMenuSlideUp 0.22s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+.map-menu__title {
+  text-align: center;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  margin: 0 0 0.4rem;
+}
+
+.map-menu__option {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: var(--sw-yellow);
+  background: rgba(255, 232, 31, 0.08);
+  border: 1px solid rgba(255, 232, 31, 0.3);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: background 0.15s ease;
+}
+.map-menu__option:hover,
+.map-menu__option:active {
+  background: rgba(255, 232, 31, 0.18);
+}
+
+.map-menu__cancel {
+  margin-top: 0.4rem;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  padding: 12px;
+  font: inherit;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+.map-menu__cancel:hover { color: var(--text); }
+
+@keyframes mapMenuFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes mapMenuSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
 
 .reveal-foot {
