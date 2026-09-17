@@ -55,7 +55,7 @@
   setText("revealSubtitle", cfg.revealSubtitle);
   setText("tagline", cfg.tagline);
   setText("lockerLocation", cfg.lockerLocation);
-  setText("lockerCode", cfg.lockerCode);
+  setText("sentBy", cfg.sentBy);
   setText("qrCaption", cfg.qrCaption);
   setText("signOff", cfg.signOff);
 

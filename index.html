@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--
+  Bump the ?v=N on style.css / config.js / main.js below whenever you edit
+  those files. Browsers cache these fairly aggressively on GitHub Pages, so
+  without a version bump a visitor's phone can keep showing an old copy
+  (REPLACE_ME placeholders, stale copy) even after you've pushed a fix.
+-->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="robots" content="noindex, nofollow" />
@@ -9,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pathway+Gothic+One&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/style.css" />
+<link rel="stylesheet" href="assets/style.css?v=2" />
 </head>
 <body>
 
@@ -68,8 +74,8 @@
     <h2 class="birthday-hero sw-logo" id="birthdayLine">Happy Birthday</h2>
     <p class="episode" id="revealSubtitle">Episode X &middot; The Gift Awakens</p>
     <p class="lede" id="tagline">
-      The book was the decoy. Your real present is waiting about 28km north
-      &mdash; heavier than it looks, and best carried with both hands.
+      Your real present is out there &mdash; wrapped, real, heavier than it
+      looks, and waiting for you to come get it.
     </p>
   </header>
 
@@ -81,8 +87,8 @@
         <span class="value" id="lockerLocation">—</span>
       </div>
       <div class="locker-field">
-        <span class="label">Pickup code</span>
-        <span class="value mono" id="lockerCode">—</span>
+        <span class="label">From</span>
+        <span class="value" id="sentBy">—</span>
       </div>
     </div>
 
@@ -100,7 +106,7 @@
   </footer>
 </main>
 
-<script src="assets/config.js"></script>
-<script src="assets/main.js"></script>
+<script src="assets/config.js?v=2"></script>
+<script src="assets/main.js?v=2"></script>
 </body>
 </html>

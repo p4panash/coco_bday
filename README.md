@@ -40,17 +40,17 @@ Everything lives in **`assets/config.js`**. No HTML required. Set:
 | `revealSubtitle` | small line under the hero; the gift hint — keep it a Star Wars riff |
 | `tagline`        | one light sentence under that |
 | `lockerLocation` | keep this VAGUE (distance/direction only) — the courier/place name is deliberately not said out loud |
-| `lockerCode`     | the real pickup code, shown as a fallback text under the barcode |
+| `sentBy`         | shown in the "From" field — currently `REPLACE_ME (your name)`, fill in whatever you want signed there |
 | `qrCaption`      | caption under the barcode image |
 | `mapLink`        | "Open in Maps" button target — this one CAN be the real address, it's just a link, not narrated copy |
 | `signOff`        | how you sign it |
 | `skipIntro`      | `true` while editing, so you skip straight to the reveal |
 
-The pickup image itself is `assets/pickup-code.png` — a real 1D barcode (courier's actual "delivery code"), not a generated QR. Replace that file directly (any image works; the markup is a plain `<img>`) if the pickup method changes again.
+The pickup image itself is `assets/pickup-code.png` — a real 1D barcode (courier's actual "delivery code"), not a generated QR. Replace that file directly (any image works; the markup is a plain `<img>`) if the pickup method changes again. The code isn't repeated as text anywhere — it's already printed under the bars in that image.
 
 **Heads up:** that barcode is a live pickup credential for a real parcel and this repo/Pages site is public. Low risk while the noindex/nofollow meta tag holds and nobody links to it, but worth knowing — swap the image (or take the repo private, which needs a paid GitHub plan for Pages) if that ever feels too loose.
 
-Commit + push and GitHub Pages redeploys in ~1 minute.
+Commit + push and GitHub Pages redeploys in ~1 minute. **Then hard-refresh before you judge the result** — `style.css`/`config.js`/`main.js` are loaded with a `?v=2` cache-buster precisely because a phone that visited before your edit can otherwise keep showing the old copy for a while. Bump that number again next time you edit any of the three.
 
 ## Local preview
 

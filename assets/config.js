@@ -16,15 +16,19 @@ window.PRANK_CONFIG = {
   revealSubtitle: "Episode X · The Gift Awakens",
 
   // One-line tag under that. Keep it light — the theme does the hinting.
+  // (Dropped "the book was the decoy" — the crawl already tells that story
+  // in detail now, no need to repeat it here. Also dropped "carried with
+  // both hands", which didn't square with the "bring a car" line below.)
   tagline:
-    "The book was the decoy. Your real present is waiting about 28km north — heavier than it looks, and best carried with both hands.",
+    "Your real present is out there — wrapped, real, heavier than it looks, and waiting for you to come get it.",
 
   // Deliberately vague — say roughly how far, not what's actually there.
   lockerLocation: "About 28km north. Bring the car, not the bike.",
 
-  // The real pickup code printed under the barcode below (assets/pickup-code.png).
-  // Shown as a fallback in case the barcode image won't scan.
-  lockerCode: "963837818",
+  // Shown in the "From" field. The pickup code itself isn't shown as text
+  // anymore — it's already printed under the barcode in
+  // assets/pickup-code.png, so a separate text field was pure duplication.
+  sentBy: "REPLACE_ME (your name)",
 
   // Caption printed under the pickup barcode
   qrCaption: "Show this at the counter. No explaining required.",
