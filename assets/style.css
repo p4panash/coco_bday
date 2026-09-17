@@ -144,9 +144,10 @@ html, body {
   line-height: 1.7;
   text-align: justify;
   font-weight: 700;
-  /* 3s hold, then 40s scroll. main.js cuts to the reveal at ~38s,
-     as the last line dissolves into the top fade. */
-  animation: crawl 40s linear 3s forwards;
+  /* 3s hold, then 55s scroll. main.js watches this element's actual
+     rendered position and cuts over the moment it dissolves into the top
+     fade — no fixed timer to keep in sync with these numbers. */
+  animation: crawl 55s linear 3s forwards;
   transform: translateY(100vh);
 }
 
@@ -166,7 +167,7 @@ html, body {
 
 @keyframes crawl {
   0% { transform: translateY(100vh); }
-  100% { transform: translateY(-220vh); }
+  100% { transform: translateY(-260vh); }
 }
 
 /* Fixed to the TOP-right: bottom-anchored controls on mobile hide behind

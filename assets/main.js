@@ -109,15 +109,21 @@
   } else {
     if (skipBtn) skipBtn.addEventListener("click", showReveal);
 
-    // The crawl is a fixed-length linear animation (style.css: 3s hold +
-    // 40s scroll). We cut to the reveal ~38s in, as the last line dissolves
-    // into the top fade. But the reader can tap to pause if something pulls
-    // them away — that freezes both the scroll (via the .is-paused class in
-    // style.css) and this timer.
-    var AUTO_MS = 38000;
-    var tapHint = document.getElementById("tapHint");
+    // Safety net only — the real cutover happens when the crawl text
+    // visually clears the top of the screen (see the rAF watcher below).
+    // Keep this well above how long the crawl could plausibly take, in
+    // case the tab was backgrounded the whole time and rAF never ran.
+    var FALLBACK_MS = 70000;
+    // How close to the top the last line has to get (as a fraction of
+    // viewport height) before we call it "cleared" and cut over, plus a
+    // short beat so it doesn't feel abrupt.
+    var CLEAR_THRESHOLD = 0.25;
+    var CLEAR_BEAT_MS = 450;
 
-    var remaining = AUTO_MS;
+    var tapHint = document.getElementById("tapHint");
+    var crawlContent = document.querySelector(".crawl-content");
+
+    var remaining = FALLBACK_MS;
     var runningSince = Date.now();
     var paused = false;
     var lastTap = 0;
@@ -135,6 +141,24 @@
         runningSince = Date.now();
         autoTimer = setTimeout(showReveal, Math.max(remaining, 0));
       }
+    }
+
+    // Primary cutover: watch the crawl's actual rendered position rather
+    // than racing a fixed timer against the CSS animation's duration — so
+    // retuning the crawl's speed/length never reintroduces a dead-air gap
+    // before the cutover.
+    if (crawlContent) {
+      (function watch() {
+        if (done) return;
+        if (!paused) {
+          var bottom = crawlContent.getBoundingClientRect().bottom;
+          if (bottom < window.innerHeight * CLEAR_THRESHOLD) {
+            setTimeout(showReveal, CLEAR_BEAT_MS);
+            return;
+          }
+        }
+        requestAnimationFrame(watch);
+      })();
     }
 
     // Use pointerdown, NOT click: the crawl text is scrolling, so a tap's
