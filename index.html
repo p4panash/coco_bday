@@ -10,7 +10,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="robots" content="noindex, nofollow" />
-<title>NICE TRY.</title>
+<title>Happy Bday</title>
 <meta name="description" content="You scanned the code. Bold. Now read carefully." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -96,25 +96,32 @@
     <button class="cta" id="mapMenuBtn" type="button">Open in Maps</button>
   </section>
 
-  <div class="map-menu" id="mapMenu" hidden>
-    <div class="map-menu__backdrop" data-close-menu></div>
-    <div class="map-menu__sheet" role="dialog" aria-modal="true" aria-label="Choose a navigation app">
-      <p class="map-menu__title">Open in&hellip;</p>
-      <a class="map-menu__option" id="mapLink" href="#" target="_blank" rel="noopener">
-        <span>Google Maps</span>
-      </a>
-      <a class="map-menu__option" id="wazeLink" href="#" target="_blank" rel="noopener">
-        <span>Waze</span>
-      </a>
-      <button class="map-menu__cancel" type="button" data-close-menu>Cancel</button>
-    </div>
-  </div>
-
   <footer class="reveal-foot">
     <p>May the Force be with you. You'll need both hands free.</p>
     <p class="signed" id="signOff">— the gang</p>
   </footer>
 </main>
+
+<!-- Deliberately OUTSIDE #reveal: that element gets a lingering
+     `transform` from its .fade-in animation (fill-mode "both" retains the
+     final keyframe's transform forever, even translateY(0)), which turns
+     it into a containing block for `position: fixed` descendants. Nested
+     inside #reveal, this sheet would be "fixed" to #reveal's own tall box
+     instead of the viewport -- landing way down the page instead of
+     pinned to the bottom of the screen. -->
+<div class="map-menu" id="mapMenu" hidden>
+  <div class="map-menu__backdrop" data-close-menu></div>
+  <div class="map-menu__sheet" role="dialog" aria-modal="true" aria-label="Choose a navigation app">
+    <p class="map-menu__title">Open in&hellip;</p>
+    <a class="map-menu__option" id="mapLink" href="#" target="_blank" rel="noopener">
+      <span>Google Maps</span>
+    </a>
+    <a class="map-menu__option" id="wazeLink" href="#" target="_blank" rel="noopener">
+      <span>Waze</span>
+    </a>
+    <button class="map-menu__cancel" type="button" data-close-menu>Cancel</button>
+  </div>
+</div>
 
 <script src="assets/config.js?v=4"></script>
 <script src="assets/main.js?v=4"></script>
