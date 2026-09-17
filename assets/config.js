@@ -20,7 +20,7 @@ window.PRANK_CONFIG = {
   // in detail now, no need to repeat it here. Also dropped "carried with
   // both hands", which didn't square with the "bring a car" line below.)
   tagline:
-    "Your real present is out there — wrapped, real, heavier than it looks, and waiting for you to come get it.",
+    "Your real present is out there, wrapped, real, heavier than it looks, and waiting for you to come get it.",
 
   // Deliberately vague — say roughly how far, not what's actually there.
   lockerLocation: "About 28km north. Bring the car, not the bike.",
@@ -36,7 +36,7 @@ window.PRANK_CONFIG = {
     "https://www.waze.com/ul?q=Strada+Morii+220W+Sfantu+Ilie+Suceava+Romania&navigate=yes",
 
   // How you sign off
-  signOff: "— the gang",
+  signOff: "the gang",
 
   // Set to true to jump straight to the reveal (handy while editing)
   skipIntro: false,
