@@ -340,17 +340,14 @@ h3 {
   padding: 1.4rem 0 0.4rem;
 }
 #qrcode {
+  display: block;
   background: #fff;
   padding: 12px;
   border-radius: 10px;
-  line-height: 0;
-  min-width: 152px;
-  min-height: 152px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 240px;
+  max-width: 80vw;
+  height: auto;
 }
-#qrcode img, #qrcode canvas { display: block; }
 .qr-caption { color: var(--muted); font-size: 0.9rem; margin: 0; text-align: center; }
 
 .cta {

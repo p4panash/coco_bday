@@ -13,7 +13,7 @@ The final leg of the birthday prank. A friend gets mailed a book he left behind,
 wrapped like a real gift from the gang. On the book: a printed QR code that lands
 here. This page laughs at him, catches him up on exactly how chaotic delivery
 logistics have been, hints that the real present is a **LEGO Star Wars** set, and
-hands over the location + a second QR for the Easybox.
+hands over a rough distance + the real courier pickup barcode.
 
 ## How it works
 
@@ -26,7 +26,7 @@ book + printed QR  ──scan──▶  this GitHub Pages site
                                   │   (auto-advances once the text clears, or tap "skip intro")
                                   ├─ THE REVEAL: big "HAPPY BIRTHDAY" in Star Wars type
                                   │   (the theme is the only hint that the gift is Star Wars)
-                                  └─ Easybox location + code + 2nd QR ──scan──▶ opens the locker
+                                  └─ vague distance + real pickup barcode ──▶ show it at the counter
 ```
 
 ## Editing it (this is all you need)
@@ -39,13 +39,16 @@ Everything lives in **`assets/config.js`**. No HTML required. Set:
 | `birthdayLine`   | the hero — biggest thing on the page ("Happy Birthday") |
 | `revealSubtitle` | small line under the hero; the gift hint — keep it a Star Wars riff |
 | `tagline`        | one light sentence under that |
-| `lockerLocation` | where the Easybox is |
-| `lockerCode`     | pickup code, shown as a fallback if the QR won't scan |
-| `qrTarget`       | what the on-page QR encodes — ideally the courier's "open locker" link, else a Maps link |
-| `qrCaption`      | caption under the QR |
-| `mapLink`        | "Open in Maps" button target |
+| `lockerLocation` | keep this VAGUE (distance/direction only) — the courier/place name is deliberately not said out loud |
+| `lockerCode`     | the real pickup code, shown as a fallback text under the barcode |
+| `qrCaption`      | caption under the barcode image |
+| `mapLink`        | "Open in Maps" button target — this one CAN be the real address, it's just a link, not narrated copy |
 | `signOff`        | how you sign it |
 | `skipIntro`      | `true` while editing, so you skip straight to the reveal |
+
+The pickup image itself is `assets/pickup-code.png` — a real 1D barcode (courier's actual "delivery code"), not a generated QR. Replace that file directly (any image works; the markup is a plain `<img>`) if the pickup method changes again.
+
+**Heads up:** that barcode is a live pickup credential for a real parcel and this repo/Pages site is public. Low risk while the noindex/nofollow meta tag holds and nobody links to it, but worth knowing — swap the image (or take the repo private, which needs a paid GitHub plan for Pages) if that ever feels too loose.
 
 Commit + push and GitHub Pages redeploys in ~1 minute.
 
@@ -64,7 +67,7 @@ Pages is served from the `main` branch root. After push:
 
 Live URL: `https://<user>.github.io/<repo>/`
 
-## The two QR codes — don't mix them up
+## Two different codes — don't mix them up
 
-1. **Printed on the book** → encodes this site's URL. You make this one yourself.
-2. **On this page** → encodes `qrTarget` (the Easybox). Generated automatically.
+1. **Printed on the book** → a QR you make yourself, encoding this site's URL.
+2. **On this page** → `assets/pickup-code.png`, the real courier barcode. Not generated — it's a screenshot of the actual pickup code, swapped in directly as an image.

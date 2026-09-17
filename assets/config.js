@@ -17,24 +17,22 @@ window.PRANK_CONFIG = {
 
   // One-line tag under that. Keep it light — the theme does the hinting.
   tagline:
-    "The book was the decoy. Your real present is waiting in a locker across town — heavier than it looks, and best carried with both hands.",
+    "The book was the decoy. Your real present is waiting about 28km north — heavier than it looks, and best carried with both hands.",
 
-  // Where the Easybox is
-  lockerLocation: "REPLACE_ME — e.g. Easybox Kaufland Militari, București",
+  // Deliberately vague — say roughly how far, not what's actually there.
+  lockerLocation: "About 28km north. Bring the car, not the bike.",
 
-  // Pickup / locker code, shown as a fallback in case the QR won't scan
-  lockerCode: "REPLACE_ME — e.g. 12345678",
+  // The real pickup code printed under the barcode below (assets/pickup-code.png).
+  // Shown as a fallback in case the barcode image won't scan.
+  lockerCode: "963837818",
 
-  // Where the SECOND QR code points. Ideally the Easybox "open locker" link
-  // from the courier (so he just scans it at the machine). A Google Maps
-  // link to the locker also works if that's all you have.
-  qrTarget: "https://maps.google.com/?q=REPLACE_ME",
+  // Caption printed under the pickup barcode
+  qrCaption: "Show this at the counter. No explaining required.",
 
-  // Caption printed under the QR on the page
-  qrCaption: "Scan this at the Easybox — no need to punch in the code",
-
-  // "Open in Maps" button target
-  mapLink: "https://maps.google.com/?q=REPLACE_ME",
+  // "Open in Maps" button target — points at the real spot even though the
+  // copy above stays vague.
+  mapLink:
+    "https://www.google.com/maps/search/?api=1&query=Strada+Morii+220W+Sfantu+Ilie+Suceava+Romania",
 
   // How you sign off
   signOff: "— the gang",

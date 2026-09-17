@@ -60,31 +60,13 @@
   setText("signOff", cfg.signOff);
 
   var mapLink = document.getElementById("mapLink");
-  if (mapLink && (cfg.mapLink || cfg.qrTarget)) {
-    mapLink.href = cfg.mapLink || cfg.qrTarget;
+  if (mapLink && cfg.mapLink) {
+    mapLink.href = cfg.mapLink;
   }
 
-  /* ---------- Build the QR code ---------- */
-  var qrEl = document.getElementById("qrcode");
-  if (qrEl && cfg.qrTarget && window.QRCode) {
-    try {
-      new window.QRCode(qrEl, {
-        text: cfg.qrTarget,
-        width: 176,
-        height: 176,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: window.QRCode.CorrectLevel.M,
-      });
-    } catch (e) {
-      qrEl.textContent = "QR: " + cfg.qrTarget;
-    }
-  } else if (qrEl) {
-    qrEl.textContent = "Set qrTarget in config.js";
-    qrEl.style.color = "#000";
-    qrEl.style.fontSize = "12px";
-    qrEl.style.padding = "16px";
-  }
+  // The pickup code is a real courier barcode image (assets/pickup-code.png,
+  // set directly in index.html) rather than a QR generated from a URL —
+  // nothing to build here.
 
   /* ---------- Intro -> reveal transition ---------- */
   var crawlScene = document.getElementById("crawl-scene");
