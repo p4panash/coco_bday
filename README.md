@@ -40,6 +40,7 @@ Everything lives in **`assets/config.js`**. No HTML required. Set:
 | `revealSubtitle` | small line under the hero; the gift hint — keep it a Star Wars riff |
 | `tagline`        | one light sentence under that |
 | `lockerLocation` | keep this VAGUE (distance/direction only) — the courier/place name is deliberately not said out loud |
+| `lockerHours`    | real opening days/hours, checked against the courier's own page |
 | `qrCaption`      | caption under the barcode image |
 | `mapLink`        | Google Maps target in the "Open in Maps" action sheet — this one CAN be the real address, it's just a link, not narrated copy |
 | `wazeLink`       | Waze target in the same sheet, `waze.com/ul?q=...&navigate=yes` format |
@@ -50,7 +51,7 @@ The pickup image itself is `assets/pickup-code.png` — a real 1D barcode (couri
 
 **Heads up:** that barcode is a live pickup credential for a real parcel and this repo/Pages site is public. Low risk while the noindex/nofollow meta tag holds and nobody links to it, but worth knowing — swap the image (or take the repo private, which needs a paid GitHub plan for Pages) if that ever feels too loose.
 
-Commit + push and GitHub Pages redeploys in ~1 minute (occasionally longer — GitHub's own build queue, not something to retry over). **Then hard-refresh before you judge the result** — `style.css`/`config.js`/`main.js` are loaded with a `?v=4` cache-buster precisely because a phone that visited before your edit can otherwise keep showing the old copy for a while. Bump that number again next time you edit any of the three.
+Commit + push and GitHub Pages redeploys in ~1 minute (occasionally longer — GitHub's own build queue, not something to retry over). **Then hard-refresh before you judge the result** — `style.css`/`config.js`/`main.js` are loaded with a `?v=6` cache-buster precisely because a phone that visited before your edit can otherwise keep showing the old copy for a while. Bump that number again next time you edit any of the three.
 
 ## Local preview
 

@@ -55,6 +55,7 @@
   setText("revealSubtitle", cfg.revealSubtitle);
   setText("tagline", cfg.tagline);
   setText("lockerLocation", cfg.lockerLocation);
+  setText("lockerHours", cfg.lockerHours);
   setText("qrCaption", cfg.qrCaption);
   setText("signOff", cfg.signOff);
 

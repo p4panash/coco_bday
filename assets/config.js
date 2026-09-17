@@ -25,11 +25,17 @@ window.PRANK_CONFIG = {
   // Deliberately vague — say roughly how far, not what's actually there.
   lockerLocation: "About 28km north. Bring the car, not the bike.",
 
+  // The real opening days/hours. Checked live against the courier's own
+  // tracking page (08:00-16:00) plus an independent listing confirming
+  // Mon-Fri only — worth a quick recheck if this ever feels stale.
+  lockerHours: "Monday to Friday, 08:00 to 16:00. Don't bother on weekends.",
+
   // Caption printed under the pickup barcode
   qrCaption: "Show this at the counter. No explaining required.",
 
-  // Two nav-app buttons, side by side. Both point at the real spot even
-  // though the copy above stays vague — pick whichever app he actually uses.
+  // "Open in Maps" action sheet: Google Maps + Waze. Both point at the real
+  // spot even though the copy above stays vague — he picks whichever app
+  // he actually uses.
   mapLink:
     "https://www.google.com/maps/search/?api=1&query=Strada+Morii+220W+Sfantu+Ilie+Suceava+Romania",
   wazeLink:
